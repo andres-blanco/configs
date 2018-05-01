@@ -1,0 +1,23 @@
+# This is Git's per-user configuration file.
+[user]
+    name = Andrés Blanco
+    email = <% EMAIL %>
+
+[credential]
+    helper = <% CREDENTIAL_HELPER %>
+
+[diff]
+    algorithm = patience
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[alias]
+    s = status -s
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    cam = commit -a -m
+    amend = commit --amend
+    ds = diff --staged
+    pr = pull --rebase
+    fuckit = "!git clean -dfx ; git reset --hard"
