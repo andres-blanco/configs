@@ -6,12 +6,16 @@
 [credential]
     helper = <% CREDENTIAL_HELPER %>
 
+
 [diff]
     algorithm = patience
     tool = vimdiff
 
 [difftool]
     prompt = false
+
+[core]
+    ignorecase = false
 
 [alias]
     s = status -s

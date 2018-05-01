@@ -9,6 +9,7 @@ install: install-tmux install-git install-vim
 	@echo 'Instalación completa'	
 
 TMUX_PLUGIN_DIR=$(HOME)/.tmux/plugins/tpm
+
 install-tmux: tmux/tmux.conf
 	test -d $(TMUX_PLUGIN_DIR) && rm -Rf $(TMUX_PLUGIN_DIR) || true
 	git clone https://github.com/tmux-plugins/tpm $(TMUX_PLUGIN_DIR)
