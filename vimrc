@@ -1,15 +1,30 @@
 set clipboard=unnamed
-execute pathogen#infect()
+
 filetype plugin indent on
 syntax on
-colorscheme badwolf
+
 set number
 set showcmd
 set cursorline
 set showmatch
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+set hlsearch
+set smartcase
+map <esc> :noh<CR>
+
+" Rebind Ctrl-C in insert mode to undo the current insert operation
+inoremap <C-c> <C-c>u
+
+" Keep screeds of undo history
+set undolevels=2000
+
 let mapleader = ","
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 20
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -19,3 +34,25 @@ au BufRead,BufNewFile Fastfile set filetype=ruby
 
 noremap <leader>a <C-a>
 noremap <leader>x <C-x>
+
+" Let me backspace over pretty much anything
+set backspace=
+" Allow backspacing over autoindent
+set backspace+=indent
+" Allow backspacing over line breaks
+set backspace+=eol
+" Allow backspacing over the start of the insert operation
+set backspace+=start
+
+" Default to no backup files at all, in a way that even ancient/tiny Vims will
+" understand; the auto_backupdir.vim plugin will take care of re-enabling this
+set nobackup
+set nowritebackup
+
+" If backps are enabled, use a more explicit and familiar backup suffix
+set backupext=.bak
+
+" Change and delete with C and D both cut off the remainder of the line from
+" the cursor, but Y yanks the whole line, which is inconsistent (and can be
+" done with yy anyway); this fixes it so it only yanks the rest of the line
+nnoremap Y y$
