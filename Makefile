@@ -2,7 +2,7 @@
 %.m4: %.mi5
 	awk -f bin/mi5.awk < $< > $@
 
-EMAIL:=andresblanco@gmail.com
+EMAIL:=email@gmail.com
 CREDENTIAL_HELPER:=osxkeychain
 
 install: install-tmux install-git install-vim 
@@ -14,6 +14,8 @@ install-tmux: tmux/tmux.conf
 	test -d $(TMUX_PLUGIN_DIR) && rm -Rf $(TMUX_PLUGIN_DIR) || true
 	git clone https://github.com/tmux-plugins/tpm $(TMUX_PLUGIN_DIR)
 	cp -p -- tmux/tmux.conf $(HOME)/.tmux.conf
+	mkdir -p -- $(HOME)/.tmux
+	cp -p -- tmux/extra/* $(HOME)/.tmux/
 
 install-vim: vim/vimrc
 	cp -p -- vim/vimrc $(HOME)/.vimrc
