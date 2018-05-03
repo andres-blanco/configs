@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'git://github.com/tpope/vim-surround.git'
 Plug 'git://github.com/tpope/vim-tbone.git'
 Plug 'git://github.com/tpope/vim-commentary.git'
-Plug 'git://github.com/tpope/vim-jdaddy.git'
 
 call plug#end()
 
