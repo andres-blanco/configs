@@ -4,6 +4,9 @@
 
 EMAIL:=email@gmail.com
 CREDENTIAL_HELPER:=osxkeychain
+# ejemplo: SIGNING_KEY='47DA2914E83D398A'
+SIGNING_KEY:=VACIO
+GPG_PROGRAM:=gpg
 
 install: install-tmux install-git install-vim 
 	@echo 'Instalación completa'	
@@ -27,7 +30,9 @@ install-git: git/gitconfig
 git/gitconfig: git/gitconfig.m4
 	m4 \
 	    -D EMAIL=$(EMAIL) \
+	    -D SIGNING_KEY=$(SIGNING_KEY) \
 	    -D CREDENTIAL_HELPER=$(CREDENTIAL_HELPER) \
+	    -D GPG_PROGRAM=$(GPG_PROGRAM) \
 	    git/gitconfig.m4 > $@
 
 clean:

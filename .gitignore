@@ -1,2 +1,4 @@
+*.swp
 git/gitconfig
 git/gitconfig.m4
+instalacion-siu.sh

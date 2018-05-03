@@ -2,10 +2,10 @@
 [user]
     name = Andrés Blanco
     email = <% EMAIL %>
+    signingkey = <% SIGNING_KEY %>
 
 [credential]
     helper = <% CREDENTIAL_HELPER %>
-
 
 [diff]
     algorithm = patience
@@ -15,6 +15,7 @@
     prompt = false
 
 [core]
+    editor = vim
     ignorecase = false
 
 [pull]
@@ -28,3 +29,6 @@
     ds = diff --staged
     pr = pull --rebase
     fuckit = "!git clean -dfx ; git reset --hard"
+
+[gpg]
+    program = <% GPG_PROGRAM %>
