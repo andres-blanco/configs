@@ -12,58 +12,77 @@ Plug 'git://github.com/tpope/vim-commentary.git'
 
 call plug#end()
 
+" Usar clipboard del SO
 set clipboard=unnamed
 
-filetype plugin indent on
-syntax on
+
+if has('autocmd')
+    filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable
+endif
+
+set number
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set nrformats-=octal
+set incsearch
+set smartcase
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+set laststatus=2
+set ruler
+set wildmenu
+if !&scrolloff
+    set scrolloff=1
+endif
+if !&sidescrolloff
+    set sidescrolloff=5
+endif
+set display+=lastline
+
+" Para usar hacer :set [no]list
+if &listchars ==# 'eol:$'
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+    set formatoptions+=j " Delete comment character when joining commented lines
+endif
 
 set autoread
-set number
-set showcmd
-set cursorline
-set showmatch
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-set hlsearch
-set smartcase
-map <esc> :noh<CR>
+if &history < 1000
+    set history=1000
+endif
+if &tabpagemax < 50
+    set tabpagemax=50
+endif
 
-" Rebind Ctrl-C in insert mode to undo the current insert operation
-inoremap <C-c> <C-c>u
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+    set t_Co=16
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+    runtime! macros/matchit.vim
+endif
+
+inoremap <C-U> <C-G>u<C-U>
 
 " Keep screeds of undo history
 set undolevels=2000
 
 let mapleader = ","
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 20
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-
-set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
-
-au BufRead,BufNewFile Fastfile set filetype=ruby
-
 noremap <leader>a <C-a>
 noremap <leader>x <C-x>
-
-" Let me backspace over pretty much anything
-set backspace=
-" Allow backspacing over autoindent
-set backspace+=indent
-" Allow backspacing over line breaks
-set backspace+=eol
-" Allow backspacing over the start of the insert operation
-set backspace+=start
-
-" Default to no backup files at all, in a way that even ancient/tiny Vims will
-" understand; the auto_backupdir.vim plugin will take care of re-enabling this
-set nobackup
-set nowritebackup
-
-" If backps are enabled, use a more explicit and familiar backup suffix
-set backupext=.bak
 
 " Change and delete with C and D both cut off the remainder of the line from
 " the cursor, but Y yanks the whole line, which is inconsistent (and can be
