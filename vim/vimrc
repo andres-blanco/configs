@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'git://github.com/tpope/vim-surround.git'
 Plug 'git://github.com/tpope/vim-tbone.git'
 Plug 'git://github.com/tpope/vim-commentary.git'
+Plug 'git://github.com/christoomey/vim-tmux-navigator.git'
 
 call plug#end()
 
@@ -22,6 +23,8 @@ endif
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
+
+colorscheme delek
 
 set number
 set autoindent
@@ -70,8 +73,6 @@ if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
     set t_Co=16
 endif
 
-colorscheme torte
-highlight Visual cterm=reverse ctermbg=NONE
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -93,9 +94,9 @@ noremap <leader>x <C-x>
 nnoremap Y y$
 
 " Window Bindings
-noremap <leader>h <C-w>h
-noremap <leader>j <C-w>j
-noremap <leader>k <C-w>k
-noremap <leader>l <C-w>l
-noremap <leader>m <C-w>\| <C-w>_
-noremap <leader>n <C-w>=
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-m> <C-w>\| <C-w>_
+noremap <C-n> <C-w>=
