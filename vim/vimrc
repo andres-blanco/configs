@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'git://github.com/tpope/vim-surround.git'
 Plug 'git://github.com/tpope/vim-tbone.git'
-Plug 'git://github.com/kien/ctrlp.git'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'git://github.com/tpope/vim-commentary.git'
 Plug 'git://github.com/christoomey/vim-tmux-navigator.git'
 
@@ -101,3 +101,17 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-m> <C-w>\| <C-w>_
 noremap <C-n> <C-w>=
+
+" CtrlP bindings
+let g:ctrlp_custom_ignore = '\v[\/]\.?(libpd|cocos2d|proj.*|git|hg|svn)$'
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Fastlane syntax
+au BufNewFile,BufRead Appfile set ft=ruby
+au BufNewFile,BufRead Deliverfile set ft=ruby
+au BufNewFile,BufRead Fastfile set ft=ruby
+au BufNewFile,BufRead Gymfile set ft=ruby
+au BufNewFile,BufRead Matchfile set ft=ruby
+au BufNewFile,BufRead Snapfile set ft=ruby
+au BufNewFile,BufRead Scanfile set ft=ruby
