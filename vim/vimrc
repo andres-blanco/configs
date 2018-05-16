@@ -10,6 +10,7 @@ Plug 'git://github.com/tpope/vim-surround.git'
 Plug 'git://github.com/tpope/vim-tbone.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'git://github.com/tpope/vim-commentary.git'
+Plug 'git://github.com/tpope/vim-repeat.git'
 Plug 'git://github.com/christoomey/vim-tmux-navigator.git'
 
 call plug#end()
