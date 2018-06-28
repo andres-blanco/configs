@@ -4,6 +4,14 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
 endif
 
+if !exists('g:os')
+    if has('win32') || has('win16')
+        let g:os = 'Windows'
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'git://github.com/tpope/vim-surround.git'
@@ -12,6 +20,11 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'git://github.com/tpope/vim-commentary.git'
 Plug 'git://github.com/tpope/vim-repeat.git'
 Plug 'git://github.com/christoomey/vim-tmux-navigator.git'
+Plug 'tomlion/vim-solidity'
+
+if g:os == 'Darwin'
+    Plug 'https://github.com/Valloric/YouCompleteMe.git'
+endif
 
 call plug#end()
 
@@ -90,6 +103,11 @@ let mapleader = ","
 noremap <leader>a <C-a>
 noremap <leader>x <C-x>
 
+if g:os == 'Darwin'
+    nnoremap <leader>j :YcmCompleter GoToDeclaration <CR>
+    nnoremap <leader>gd :YcmCompleter GoTo <CR>
+    nnoremap <leader>vd :vsplit <CR> :YcmCompleter GoTo <CR>
+endif
 " Change and delete with C and D both cut off the remainder of the line from
 " the cursor, but Y yanks the whole line, which is inconsistent (and can be
 " done with yy anyway); this fixes it so it only yanks the rest of the line
@@ -116,3 +134,8 @@ au BufNewFile,BufRead Gymfile set ft=ruby
 au BufNewFile,BufRead Matchfile set ft=ruby
 au BufNewFile,BufRead Snapfile set ft=ruby
 au BufNewFile,BufRead Scanfile set ft=ruby
+
+"if g:os == 'Linux'
+"    " linux stuff
+"endif
+
