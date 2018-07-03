@@ -1,7 +1,7 @@
 # Personal configs
 These are my personal configuration files for ```tmux```, ```vim``` and ```git```. It's tested on Mac OS and Ubuntu.
 
-If you want to use it you have to run it like this:
+If you want to use it you have to run it like this. **THIS WILL BREAK YOUR CURRENT CONFIG**:
 ```bash
 make install \
     EMAIL=YOUR@email.com 
