@@ -123,7 +123,7 @@ noremap <C-m> <C-w>\| <C-w>_
 noremap <C-n> <C-w>=
 
 " CtrlP bindings
-let g:ctrlp_custom_ignore = '\v[\/]\.?(libpd|cocos2d|proj.*|git|hg|svn)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(node_modules|dist|libpd|cocos2d|proj.*|git|hg|svn)$'
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
