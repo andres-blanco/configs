@@ -22,6 +22,7 @@ Plug 'git://github.com/tpope/vim-repeat.git'
 Plug 'git://github.com/christoomey/vim-tmux-navigator.git'
 Plug 'tomlion/vim-solidity'
 Plug 'git://github.com/posva/vim-vue.git'
+Plug 'https://github.com/ledger/vim-ledger.git'
 
 if g:os == 'Darwin'
     Plug 'https://github.com/Valloric/YouCompleteMe.git'
